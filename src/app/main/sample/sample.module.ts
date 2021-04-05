@@ -10,31 +10,37 @@ import { CompanyComponent } from "../company/company.component";
 import { CompanyViewComponent } from "../company/company-view/company-view.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 const routes: Routes = [
     {
-        path: "",redirectTo:'admin',pathMatch:'full'
-    }, 
-    {
-        path: "admin", 
-        canActivate: [AuthService],
-        loadChildren:()=> import("../admin/admin.module").then(m => m.AdminModule)
+        path: "",
+        redirectTo: "admin",
+        pathMatch: "full",
     },
     {
-        path: "client", 
+        path: "admin",
         canActivate: [AuthService],
-        loadChildren:()=> import("../client/client.module").then(m => m.ClientModule)
+        loadChildren: () =>
+            import("../admin/admin.module").then((m) => m.AdminModule),
+    },
+    {
+        path: "client",
+        canActivate: [AuthService],
+        loadChildren: () =>
+            import("../client/client.module").then((m) => m.ClientModule),
     },
 ];
 
 @NgModule({
     declarations: [SampleComponent, CompanyComponent, CompanyViewComponent],
     imports: [
+        BrowserAnimationsModule,
         RouterModule.forChild(routes),
         TranslateModule,
         FuseSharedModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
     ],
     exports: [SampleComponent, CompanyComponent, CompanyViewComponent],
 })

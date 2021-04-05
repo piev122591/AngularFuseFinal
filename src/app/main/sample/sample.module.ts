@@ -10,7 +10,6 @@ import { CompanyComponent } from "../company/company.component";
 import { CompanyViewComponent } from "../company/company-view/company-view.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 const routes: Routes = [
     {
@@ -35,7 +34,6 @@ const routes: Routes = [
 @NgModule({
     declarations: [SampleComponent, CompanyComponent, CompanyViewComponent],
     imports: [
-        BrowserAnimationsModule,
         RouterModule.forChild(routes),
         TranslateModule,
         FuseSharedModule,

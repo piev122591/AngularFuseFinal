@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyChangeEventService } from 'app/core/services/company-change-event.service';
+import { UserService } from "./service/user.service";
 
 @Component({
   selector: 'app-admin-users',
   templateUrl: './admin-users.component.html',
-  styleUrls: ['./admin-users.component.scss']
+  providers: [UserService],
 })
 export class AdminUsersComponent implements OnInit {
-
-  constructor(private router: Router,private companyChangeEventService: CompanyChangeEventService) { }
+    users$ = this.userService.getUsers();
+  constructor(
+      private router: Router,
+      private companyChangeEventService: CompanyChangeEventService,
+      private userService : UserService
+      ) { }
 
 
   ngOnInit() {

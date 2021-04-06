@@ -9,16 +9,17 @@ import { fuseAnimations } from "@fuse/animations";
 })
 export class AssetsViewComponent implements OnInit {
     displayedColumns = [
-        "id",
-        "image",
-        "name",
-        "category",
-        "price",
-        "quantity",
-        "active",
+        "DeviceId",
+        "Vendor",
+        "AssetType",
+        "Make",
+        "Model",
+        "Status",
+        "Image",
+        "Action",
+      
     ];
     @Input() assets: any;
-
     constructor() {}
 
     ngOnInit() {}

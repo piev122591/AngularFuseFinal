@@ -82,7 +82,15 @@ $typography: mat-typography-config(
 @import "src/app/layout/components/chat-panel/chat-panel.theme";
 @import "src/app/layout/components/toolbar/toolbar.theme";
 @import "src/app/main/admin/admin-assets/assets.themes";
-
+@import "src/app/main/admin/admin-charges/charges.themes";
+@import "src/app/main/admin/admin-vendors/vendors.themes";
+@import "src/app/main/admin/admin-payments/payments.themes";
+@import "src/app/main/admin/admin-services/services.themes";
+@import "src/app/main/admin/admin-users/users.themes";
+@import "src/app/main/admin/admin-wireless/wireless.themes";
+@import "src/app/main/admin/admin-plans/plans.themes";
+@import "src/app/main/admin/admin-companies/company.themes";
+@import "src/app/main/admin/admin-edi/edi.themes";
 // Define a mixin for easier access
 @mixin components-theme($theme) {
 
@@ -90,6 +98,17 @@ $typography: mat-typography-config(
     @include chat-panel-theme($theme);
     @include toolbar-theme($theme);
     @include assets-theme($theme);
+    @include charges-theme($theme);
+    @include vendors-theme($theme);
+    @include payments-theme($theme);
+    @include services-theme($theme);
+    @include users-theme($theme);
+    @include wireless-theme($theme);
+    @include plans-theme($theme);
+    @include company-theme($theme);
+    @include edi-theme($theme);
+
+
 }
 
 // -----------------------------------------------------------------------------------------------------

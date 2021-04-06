@@ -14,7 +14,7 @@ import { FuseConfigService } from "@fuse/services/config.service";
 import { FuseNavigationService } from "@fuse/components/navigation/navigation.service";
 import { FusePerfectScrollbarDirective } from "@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive";
 import { FuseSidebarService } from "@fuse/components/sidebar/sidebar.service";
-import { FuseNavigation } from "@fuse/types/fuse-navigation";
+import { User } from "app/login/model/login.model";
 
 @Component({
     selector: "navbar-vertical-style-1",
@@ -23,7 +23,7 @@ import { FuseNavigation } from "@fuse/types/fuse-navigation";
     encapsulation: ViewEncapsulation.None,
 })
 export class NavbarVerticalStyle1Component implements OnInit, OnDestroy {
-    @Input() navigationData: FuseNavigation[];
+    @Input() navigationData: User;
     fuseConfig: any;
     navigation: any;
 

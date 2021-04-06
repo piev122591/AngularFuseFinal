@@ -1,1 +1,2 @@
-<app-login-view></app-login-view>
+<app-login-view (loginEvent)="loginEvent($event)"></app-login-view>
+<ng-container *ngIf="login$ | async"></ng-container>

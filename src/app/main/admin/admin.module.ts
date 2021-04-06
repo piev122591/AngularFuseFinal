@@ -18,8 +18,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTabsModule } from "@angular/material/tabs";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from "@angular/material/table";
+import { RouterModule } from "@angular/router";
+import { DashboardViewComponent } from "./admin-dashboard/dashboard-view/dashboard-view.component";
 
 @NgModule({
     imports: [
@@ -43,8 +44,10 @@ import { MatTableModule } from "@angular/material/table";
     declarations: [
         AdminComponent,
         AdminDashboardComponent,
+        DashboardViewComponent,
         AdminAssetsComponent,
         AssetsViewComponent,
     ],
+    exports: [RouterModule],
 })
 export class AdminModule {}

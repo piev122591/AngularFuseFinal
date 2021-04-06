@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { FuseNavigationService } from "@fuse/components/navigation/navigation.service";
 import { FuseNavigation } from "@fuse/types";
-import { CompanyChangeEventService } from "app/core/services/company-change-event.service";
-import { merge, Observable, of } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { Observable, of } from "rxjs";
+import { map } from "rxjs/operators";
 import { company1, company2, company3, adminNav } from "./navigation.data";
+import { UserService } from "../../../../shared/service/user.service";
+import { User } from "app/login/model/login.model";
 
 @Injectable({
     providedIn: "root",
@@ -12,33 +13,49 @@ import { company1, company2, company3, adminNav } from "./navigation.data";
 export class NavigationService {
     constructor(
         private fuseNavigationService: FuseNavigationService,
-        private companyChangeEventService: CompanyChangeEventService
+        private userService: UserService
     ) {}
 
-    defaultNav(): Observable<FuseNavigation[]> {
-        return merge(
-            of({ companyId: undefined }),
-            this.companyChangeEventService.on<{
-                companyId: number;
-            }>()
-        ).pipe(
-            switchMap(
-                (company): Observable<FuseNavigation[]> => {
-                    return this.setDefaultNav(company.companyId).pipe(
-                        switchMap(
-                            (nav): Observable<FuseNavigation[]> => {
-                                this.fuseNavigationService.unregister("main");
-                                this.fuseNavigationService.register(
-                                    "main",
-                                    nav
-                                );
-                                this.fuseNavigationService.setCurrentNavigation(
-                                    "main"
-                                );
-                                return of(nav);
-                            }
-                        )
+    defaultNav(): Observable<User> {
+        // return merge(
+        //     of({ companyId: undefined }),
+        //     this.companyChangeEventService.on<{
+        //         companyId: number;
+        //     }>()
+        // ).pipe(
+        //     switchMap(
+        //         (company): Observable<FuseNavigation[]> => {
+        //             return this.setDefaultNav(company.companyId).pipe(
+        //                 switchMap(
+        //                     (nav): Observable<FuseNavigation[]> => {
+        //                         this.fuseNavigationService.unregister("main");
+        //                         this.fuseNavigationService.register(
+        //                             "main",
+        //                             nav
+        //                         );
+        //                         this.fuseNavigationService.setCurrentNavigation(
+        //                             "main"
+        //                         );
+        //                         return of(nav);
+        //                     }
+        //                 )
+        //             );
+        //         }
+        //     )
+        // );
+
+        return this.userService.getCurrentUser().pipe(
+            map(
+                (user): User => {
+                    if (this.fuseNavigationService.getNavigation("main")) {
+                        this.fuseNavigationService.unregister("main");
+                    }
+                    this.fuseNavigationService.register(
+                        "main",
+                        user.Navigation
                     );
+                    this.fuseNavigationService.setCurrentNavigation("main");
+                    return user;
                 }
             )
         );

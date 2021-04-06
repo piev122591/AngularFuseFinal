@@ -4,6 +4,7 @@ import { ClientComponent } from "./client.component";
 import { ClientRoutingRoutes } from "./client-routing.routing";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     imports: [
@@ -13,5 +14,6 @@ import { MatIconModule } from "@angular/material/icon";
         MatButtonModule,
     ],
     declarations: [ClientComponent],
+    exports: [RouterModule],
 })
 export class ClientModule {}

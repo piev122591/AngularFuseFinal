@@ -1,23 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { CompanyChangeEventService } from "app/core/services/company-change-event.service";
+import { Component } from "@angular/core";
+import { Company } from "app/login/model/login.model";
+import { DashboardService } from "./dashboard.service";
 
 @Component({
     selector: "app-admin-dashboard",
     templateUrl: "./admin-dashboard.component.html",
-    styleUrls: ["./admin-dashboard.component.scss"],
+    providers: [DashboardService],
 })
-export class AdminDashboardComponent implements OnInit {
-    constructor(
-        private router: Router,
-        private companyChangeEventService: CompanyChangeEventService
-    ) {}
-
-    ngOnInit() {}
-    chooseCompany(companyId: number): void {
-        this.companyChangeEventService.fire({
-            companyId: companyId,
-        });
-        this.router.navigate(["/client", companyId, "dashboard"]);
+export class AdminDashboardComponent {
+    dashboardData$ = this.dashboardService.getUserCompany();
+    constructor(private dashboardService: DashboardService) {}
+    chooseCompanyEvent(company: Company): void {
+        this.dashboardService.chooseCompany(company);
     }
 }

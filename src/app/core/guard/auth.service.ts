@@ -1,26 +1,30 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import {
     ActivatedRouteSnapshot,
     CanActivate,
     Router,
     RouterStateSnapshot,
+    UrlTree,
 } from "@angular/router";
+import { map } from "rxjs/operators";
+import { LoginService } from "../../login/service/login.service";
 
 @Injectable()
 export class AuthService implements CanActivate {
-    constructor(private router: Router) {}
+    constructor(private router: Router, private loginService: LoginService) {}
     canActivate(
         _route: ActivatedRouteSnapshot,
         _state: RouterStateSnapshot
-    ): boolean {
-        if (this.loggedIn()) {
-            return true;
-        }
-        this.router.navigate(["/login"]);
-        return false;
+    ): Observable<boolean | UrlTree> {
+        return this.loggedIn().pipe(
+            map((isLoggedIn): boolean | UrlTree => {
+                return isLoggedIn ? true : this.router.parseUrl("/login");
+            })
+        );
     }
 
-    loggedIn() {
-        return false;
+    loggedIn(): Observable<boolean> {
+        return this.loginService.loginStatus$;
     }
 }

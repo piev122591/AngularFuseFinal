@@ -1,17 +1,1 @@
- 
-<div fxLayout="row" fxLayoutAlign="center center" fxLayoutAlign.gt-xs="space-between" >
-  <button (click)="chooseCompany(1)" mat-button class="pink">
-    <mat-icon class="s-16 mr-sm-4">business</mat-icon>
-    <span>Company 1</span>
-   </button>
-   
-  <button (click)="chooseCompany(2)" mat-button class="pink">
-    <mat-icon class="s-16 mr-sm-4">business</mat-icon>
-    <span>Company 2</span>
-   </button>
-   
-  <button (click)="chooseCompany(3)" mat-button class="pink">
-    <mat-icon class="s-16 mr-sm-4">business</mat-icon>
-    <span>Company 3</span>
-   </button>
-   </div>
+<app-dashboard-view [dashboardData]="dashboardData$  | async" (chooseCompanyEvent)="chooseCompanyEvent($event)"></app-dashboard-view>

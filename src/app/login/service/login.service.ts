@@ -28,13 +28,15 @@ export class LoginService {
         switchMap(
             (loginData): Observable<LoginResult> => this.checkLogin(loginData)
         ),
-        map((user): boolean => {
-            if (user.response) {
-                this.router.navigate(["/admin", "dashboard"]);
+        map(
+            (user): LoginResult => {
+                if (user.response) {
+                    this.router.navigate(["/admin", "dashboard"]);
+                }
+                this.loginStatus.next(user);
+                return user;
             }
-            this.loginStatus.next(user);
-            return user.response;
-        }),
+        ),
         shareReplay(1)
     );
     constructor(private router: Router, private userService: UserService) {}

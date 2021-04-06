@@ -1,2 +1,5 @@
-<app-login-view (loginEvent)="loginEvent($event)"></app-login-view>
-<ng-container *ngIf="login$ | async"></ng-container>
+<app-login-view
+    (loginEvent)="loginEvent($event)"
+    [loginData]="login$ | async"
+></app-login-view>
+<!-- <ng-container *ngIf="login$ | async"></ng-container> -->

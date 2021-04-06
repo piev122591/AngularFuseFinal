@@ -20,6 +20,7 @@ export class DashboardService {
     chooseCompany(company: Company): void {
         this.companyChangeEventService.fire({
             companyId: company.CompanyId,
+            role: "client",
         });
         this.router.navigate(["/client", company.CompanyId, "dashboard"]);
     }

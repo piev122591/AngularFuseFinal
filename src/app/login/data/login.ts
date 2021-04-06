@@ -7,7 +7,8 @@ export const logindata: User[] = [
         FirstName: "Pievan",
         MiddleName: "M",
         LastName: "Tocao",
-        Company: [
+        Role: "admin",
+        CompanyList: [
             {
                 CompanyId: 1,
                 CompanyName: "Burger King",
@@ -97,6 +98,36 @@ export const logindata: User[] = [
                         type: "item",
                         icon: "business",
                         url: "admin/edi",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        UserName: "Pievan",
+        Email: "Pievan@gmail.com",
+        UserId: "1",
+        FirstName: "Pievan",
+        MiddleName: "M",
+        LastName: "Tocao",
+        Role: "client",
+        CompanyList: [],
+        Company: {
+            CompanyId: 1,
+            CompanyName: "Burger King",
+        },
+        Navigation: [
+            {
+                id: "applications",
+                title: "Applications",
+                type: "group",
+                children: [
+                    {
+                        id: "dashboard",
+                        title: "Dashboard Uno",
+                        type: "item",
+                        url: "/ui/page-layouts/blank",
+                        icon: "dashboard",
                     },
                 ],
             },

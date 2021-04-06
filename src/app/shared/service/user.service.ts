@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject, Observable, BehaviorSubject } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { FuseNavigation } from "../../../@fuse/types/fuse-navigation";
 import { User, Company } from "../../login/model/login.model";
 import { map } from "rxjs/operators";
@@ -33,7 +33,7 @@ export class UserService {
     }
     getCompany(): Observable<Company[]> {
         return this.getCurrentUser().pipe(
-            map((user): Company[] => user.Company)
+            map((user): Company[] => user.CompanyList)
         );
     }
 }

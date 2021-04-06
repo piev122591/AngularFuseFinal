@@ -17,8 +17,10 @@ export class User {
     FirstName: string;
     MiddleName: string;
     LastName: string;
-    Company: Company[];
+    CompanyList: Company[];
+    Company?: Company;
     Navigation: FuseNavigation[];
+    Role: "admin" | "client";
 }
 
 export class Company {

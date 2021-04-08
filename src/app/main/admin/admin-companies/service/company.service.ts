@@ -1,13 +1,18 @@
 import { Injectable } from "@angular/core";
 import { combineLatest, Observable, of } from "rxjs";
-import { companyList, CompanySampleData } from "../data/products";
+import {
+    CompanyEventType,
+    companyList,
+    CompanySampleData,
+} from "../data/products";
 import { CompanyData, FilterSearchFunction } from "../../model/company.model";
 import { switchMap } from "rxjs/operators";
 import { MatTableDataSource } from "@angular/material/table";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class CompanyService {
-    constructor() {}
+    constructor(private router: Router) {}
 
     getCompanyData(): Observable<CompanyData> {
         return combineLatest([
@@ -19,6 +24,14 @@ export class CompanyService {
                     this.getFilterFunction(companyData, displayedColumns)
             )
         );
+    }
+    submitAdd(event: CompanyEventType): void {
+        companyList.push({
+            CompanyId: companyList.length + 1,
+            CompanyName: event.data.companyName,
+            Status: event.data.status,
+        });
+        this.router.navigate(["admin/companies"]);
     }
 
     private getFilterFunction(
@@ -38,7 +51,9 @@ export class CompanyService {
             companyData.filterPredicate = (data, filter: string): boolean => {
                 return (
                     data.CompanyId.toString().includes(filter) ||
-                    data.CompanyName.includes(filter)
+                    data.CompanyName.toLowerCase().includes(
+                        filter.toLowerCase()
+                    )
                 );
             };
             const filterValue = (event.target as HTMLInputElement).value;

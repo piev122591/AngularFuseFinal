@@ -39,6 +39,11 @@ import { CompaniesViewComponent } from "./admin-companies/companies-view/compani
 import { AdminCompaniesComponent } from "./admin-companies/admin-companies.component";
 import { EdiViewComponent } from "./admin-edi/edi-view/edi-view.component";
 import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
+import { NewCompanyComponent } from "./admin-companies/new-company/new-company.component";
+import { MatStepperModule } from "@angular/material/stepper";
+import { NewCompanyViewComponent } from "./admin-companies/new-company/new-company-view/new-company-view.component";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { CompanyService } from "./admin-companies/service/company.service";
 
 @NgModule({
     imports: [
@@ -57,6 +62,10 @@ import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
         MatSnackBarModule,
         MatTabsModule,
         MatTableModule,
+        MatFormFieldModule,
+        MatStepperModule,
+        MatCheckboxModule,
+        MatIconModule,
         FuseSharedModule,
     ],
     declarations: [
@@ -83,6 +92,8 @@ import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
         AdminCompaniesComponent,
         EdiViewComponent,
         AdminEdiComponent,
+        NewCompanyComponent,
+        NewCompanyViewComponent,
     ],
     exports: [RouterModule],
 })

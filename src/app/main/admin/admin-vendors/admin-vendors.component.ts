@@ -1,20 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyChangeEventService } from 'app/core/services/company-change-event.service';
-import { VendorService } from "./service/vendor.service";
+
 @Component({
   selector: 'app-admin-vendors',
   templateUrl: './admin-vendors.component.html',
-  providers:[VendorService],
-  
+  styleUrls: ['./admin-vendors.component.scss']
 })
 export class AdminVendorsComponent implements OnInit {
-    vendors$ = this.vendorService.getVendors();
-  constructor(
-      private router:Router,
-      private companyChangeEventService: CompanyChangeEventService,
-      private vendorService: VendorService
-      ) { }
+
+  constructor(private router: Router,private companyChangeEventService: CompanyChangeEventService) { }
 
 
   ngOnInit() {

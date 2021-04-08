@@ -91,6 +91,7 @@ $typography: mat-typography-config(
 @import "src/app/main/admin/admin-plans/plans.themes";
 @import "src/app/main/admin/admin-companies/company.themes";
 @import "src/app/main/admin/admin-edi/edi.themes";
+@import "src/app/login/login-2.theme";
 // Define a mixin for easier access
 @mixin components-theme($theme) {
 
@@ -109,6 +110,7 @@ $typography: mat-typography-config(
     @include edi-theme($theme);
 
 
+    @include login-2-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

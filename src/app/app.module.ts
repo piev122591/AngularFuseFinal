@@ -18,22 +18,23 @@ import {
 import { fuseConfig } from "app/fuse-config";
 import { AppComponent } from "app/app.component";
 import { LayoutModule } from "app/layout/layout.module";
-import { SampleModule } from "app/main/sample/sample.module";
-import { LoginModule } from "./login/login.module";
-import { LoginComponent } from "./login/login.component";
 import { AuthService } from "./core/guard/auth.service";
-import { SampleComponent } from "./main/sample/sample.component";
 import { LoggedInAuthService } from "./core/guard/logged-in-auth.service";
-
 const appRoutes: Routes = [
     {
         path: "login",
-        component: LoginComponent,
         canActivate: [LoggedInAuthService],
+        loadChildren: () =>
+            import("./login/login.module").then((m) => m.LoginModule),
     },
 
     // home route protected by auth guard
-    { path: "", component: SampleComponent, canActivate: [AuthService] },
+    {
+        path: "",
+        canActivate: [AuthService],
+        loadChildren: () =>
+            import("./main/sample/sample.module").then((m) => m.SampleModule),
+    },
 
     // otherwise redirect to home
     { path: "**", redirectTo: "" },
@@ -60,8 +61,6 @@ const appRoutes: Routes = [
         FuseThemeOptionsModule,
         // App modules
         LayoutModule,
-        SampleModule,
-        LoginModule,
     ],
     bootstrap: [AppComponent],
     providers: [AuthService, LoggedInAuthService],

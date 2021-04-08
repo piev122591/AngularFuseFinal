@@ -133,4 +133,64 @@ export const logindata: User[] = [
             },
         ],
     },
+    {
+        UserName: "Pievan",
+        Email: "Pievan@gmail.com",
+        UserId: "1",
+        FirstName: "Pievan",
+        MiddleName: "M",
+        LastName: "Tocao",
+        Role: "client",
+        CompanyList: [],
+        Company: {
+            CompanyId: 2,
+            CompanyName: "Mcdo",
+        },
+        Navigation: [
+            {
+                id: "applications",
+                title: "Applications",
+                type: "group",
+                children: [
+                    {
+                        id: "dashboard",
+                        title: "Dashboard Dos",
+                        type: "item",
+                        url: "/ui/page-layouts/blank",
+                        icon: "dashboard",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        UserName: "Pievan",
+        Email: "Pievan@gmail.com",
+        UserId: "1",
+        FirstName: "Pievan",
+        MiddleName: "M",
+        LastName: "Tocao",
+        Role: "client",
+        CompanyList: [],
+        Company: {
+            CompanyId: 3,
+            CompanyName: "Wendys",
+        },
+        Navigation: [
+            {
+                id: "applications",
+                title: "Applications",
+                type: "group",
+                children: [
+                    {
+                        id: "dashboard",
+                        title: "Dashboard Tres",
+                        type: "item",
+                        url: "/ui/page-layouts/blank",
+                        icon: "dashboard",
+                    },
+                ],
+            },
+        ],
+    },
 ];

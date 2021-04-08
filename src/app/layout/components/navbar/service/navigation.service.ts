@@ -5,6 +5,7 @@ import { Observable, of } from "rxjs";
 import { map } from "rxjs/operators";
 import { company1, company2, company3, adminNav } from "./navigation.data";
 import { UserService } from "../../../../shared/service/user.service";
+import { CompanyChangeEventService } from "app/core/services/company-change-event.service";
 import { User } from "app/login/model/login.model";
 
 @Injectable({
@@ -13,7 +14,8 @@ import { User } from "app/login/model/login.model";
 export class NavigationService {
     constructor(
         private fuseNavigationService: FuseNavigationService,
-        private userService: UserService
+        private userService: UserService,
+        private companyChangeEventService: CompanyChangeEventService
     ) {}
 
     defaultNav(): Observable<User> {
@@ -52,7 +54,7 @@ export class NavigationService {
                     }
                     this.fuseNavigationService.register(
                         "main",
-                        user.Navigation
+                        user.Navigation || []
                     );
                     this.fuseNavigationService.setCurrentNavigation("main");
                     return user;
@@ -75,4 +77,13 @@ export class NavigationService {
             return of(adminNav);
         }
     }
+
+    // private listenToCompanyChangeEvent(): Observable<{ companyId?: number }> {
+    //     return merge(
+    //         of({ companyId: undefined }),
+    //         this.companyChangeEventService.on<{
+    //             companyId: number;
+    //         }>()
+    //     );
+    // }
 }

@@ -9,17 +9,13 @@ import { map } from "rxjs/operators";
 })
 export class UserService {
     private userSubject = new BehaviorSubject<User>(new User());
-
-    constructor() {}
     setCurrentUser(user: User): void {
-        console.log("set", user);
         return this.userSubject.next(user);
     }
     getCurrentUser(): Observable<User> {
         return this.userSubject.asObservable().pipe(
             map(
                 (user): User => {
-                    console.log("current", user);
                     return user;
                 }
             )

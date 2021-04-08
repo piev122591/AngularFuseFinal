@@ -17,7 +17,6 @@ export class AuthService implements CanActivate {
         _route: ActivatedRouteSnapshot,
         _state: RouterStateSnapshot
     ): Observable<boolean | UrlTree> {
-        console.log("params", _route.params);
         return this.loggedIn().pipe(
             map((isLoggedIn): boolean | UrlTree => {
                 return isLoggedIn ? true : this.router.parseUrl("/login");

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { FuseNavigationService } from "@fuse/components/navigation/navigation.service";
 import { FuseNavigation } from "@fuse/types";
 import { CompanyChangeEventService } from "app/core/services/company-change-event.service";
-import { merge, Observable, of } from "rxjs";
+import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { company1, company2, company3, adminNav } from "./navigation.data";
 
@@ -16,32 +16,33 @@ export class NavigationService {
     ) {}
 
     defaultNav(): Observable<FuseNavigation[]> {
-        return merge(
-            of({ companyId: undefined }),
-            this.companyChangeEventService.on<{
+        return this.companyChangeEventService
+            .on<{
                 companyId: number;
             }>()
-        ).pipe(
-            switchMap(
-                (company): Observable<FuseNavigation[]> => {
-                    return this.setDefaultNav(company.companyId).pipe(
-                        switchMap(
-                            (nav): Observable<FuseNavigation[]> => {
-                                this.fuseNavigationService.unregister("main");
-                                this.fuseNavigationService.register(
-                                    "main",
-                                    nav
-                                );
-                                this.fuseNavigationService.setCurrentNavigation(
-                                    "main"
-                                );
-                                return of(nav);
-                            }
-                        )
-                    );
-                }
-            )
-        );
+            .pipe(
+                switchMap(
+                    (company): Observable<FuseNavigation[]> => {
+                        return this.setDefaultNav(company.companyId).pipe(
+                            switchMap(
+                                (nav): Observable<FuseNavigation[]> => {
+                                    this.fuseNavigationService.unregister(
+                                        "main"
+                                    );
+                                    this.fuseNavigationService.register(
+                                        "main",
+                                        nav
+                                    );
+                                    this.fuseNavigationService.setCurrentNavigation(
+                                        "main"
+                                    );
+                                    return of(nav);
+                                }
+                            )
+                        );
+                    }
+                )
+            );
     }
 
     setDefaultNav(company: number): Observable<FuseNavigation[]> {
@@ -53,9 +54,10 @@ export class NavigationService {
         }
         if (company === 1) {
             return of(company1);
+        }if(company === undefined)
+        {
+        return of(adminNav);
         }
-        if (company === undefined) {
-            return of(adminNav);
-        }
+        
     }
 }

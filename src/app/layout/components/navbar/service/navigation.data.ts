@@ -2,6 +2,24 @@ import { FuseNavigation } from "@fuse/types";
 
 export const adminNav: FuseNavigation[] = [
     {
+        id: "applications",
+        title: "Applications",
+        type: "group",
+        children: [
+            {
+                id: "vendors",
+                title: "Vendors",
+                type: "item",
+                icon: "business",
+                url: "/vendors",
+            },
+           
+        ],
+    },
+];
+
+export const company1: FuseNavigation[] = [
+    {
         id: "global",
         title: "Global Management",
         type: "group",
@@ -12,7 +30,7 @@ export const adminNav: FuseNavigation[] = [
                 type: "item",
                 icon: "dashboard",
                 url: "admin/assets",
-            },
+            }, 
             {
                 id: "vendors",
                 title: "Vendors",
@@ -77,24 +95,9 @@ export const adminNav: FuseNavigation[] = [
                 icon: "business",
                 url: "admin/edi",
             },
-           
-        ],
-    },
-];
 
-export const company1: FuseNavigation[] = [
-    {
-        id: "global",
-        title: "Global Management",
-        type: "group",
-        children: [
-            {
-                id: "dashboard",
-                title: "Company Dashboard 1",
-                type: "item",
-                url: "/ui/page-layouts/blank",
-                icon: "dashboard",
-            },
+
+
             
         ],
     },
@@ -107,7 +110,7 @@ export const company2: FuseNavigation[] = [
         children: [
             {
                 id: "dashboard",
-                title: "Company Dashboard 2",
+                title: "Dashboard Dos",
                 type: "item",
                 url: "/ui/page-layouts/blank",
                 icon: "dashboard",
@@ -123,7 +126,7 @@ export const company3: FuseNavigation[] = [
         children: [
             {
                 id: "dashboard",
-                title: "Company Dashboard 3",
+                title: "Dashboard Tres",
                 type: "item",
                 url: "/ui/page-layouts/blank",
                 icon: "dashboard",

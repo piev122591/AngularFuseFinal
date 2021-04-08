@@ -44,6 +44,9 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { NewCompanyViewComponent } from "./admin-companies/new-company/new-company-view/new-company-view.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { CompanyService } from "./admin-companies/service/company.service";
+import { CompanyResolverService } from "./admin-companies/service/company-resolver.service";
+import { EditCompanyComponent } from "./admin-companies/edit-company/edit-company.component";
+import { EditCompanyViewComponent } from "./admin-companies/edit-company/edit-company-view/edit-company-view.component";
 
 @NgModule({
     imports: [
@@ -94,7 +97,10 @@ import { CompanyService } from "./admin-companies/service/company.service";
         AdminEdiComponent,
         NewCompanyComponent,
         NewCompanyViewComponent,
+        EditCompanyComponent,
+        EditCompanyViewComponent,
     ],
     exports: [RouterModule],
+    providers: [CompanyService, CompanyResolverService],
 })
 export class AdminModule {}

@@ -15,6 +15,8 @@ import { AdminWirelessComponent } from "./admin-wireless/admin-wireless.componen
 
 import { AdminComponent } from "./admin.component";
 import { NewCompanyComponent } from "./admin-companies/new-company/new-company.component";
+import { CompanyResolverService } from "./admin-companies/service/company-resolver.service";
+import { EditCompanyComponent } from "./admin-companies/edit-company/edit-company.component";
 
 const routes: Routes = [
     {
@@ -49,6 +51,13 @@ const routes: Routes = [
     {
         path: "companies/new",
         component: NewCompanyComponent,
+    },
+    {
+        path: "companies/:id/edit",
+        component: EditCompanyComponent,
+        resolve: {
+            company: CompanyResolverService,
+        },
     },
 
     {

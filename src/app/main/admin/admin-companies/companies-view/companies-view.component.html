@@ -78,7 +78,7 @@
               <ng-container matColumnDef="Action">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
                   <mat-cell *matCellDef="let comp">
-                      <p class="text-truncate"> <button mat-button class="blue" >Edit</button></p>
+                      <p class="text-truncate"> <a [routerLink]="'/admin/companies/'+comp.CompanyId+'/edit'" mat-button class="blue" >Edit</a></p>
                   </mat-cell>
               </ng-container>
   

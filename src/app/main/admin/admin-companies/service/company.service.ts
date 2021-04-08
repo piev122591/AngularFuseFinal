@@ -10,7 +10,9 @@ import { switchMap } from "rxjs/operators";
 import { MatTableDataSource } from "@angular/material/table";
 import { Router } from "@angular/router";
 
-@Injectable()
+@Injectable({
+    providedIn: "root",
+})
 export class CompanyService {
     constructor(private router: Router) {}
 
@@ -32,6 +34,27 @@ export class CompanyService {
             Status: event.data.status,
         });
         this.router.navigate(["admin/companies"]);
+    }
+    submitEdit(event: CompanyEventType): void {
+        const currentCompany = companyList.find(
+            (com): boolean => com.CompanyId === event.data.companyId
+        );
+        currentCompany.CompanyName = event.data.companyName;
+        currentCompany.Status = event.data.status;
+
+        this.router.navigate(["admin/companies"]);
+    }
+    getCompanyById(
+        companyId: string
+    ): Observable<CompanySampleData | undefined> {
+        if (!companyId) {
+            throw new Error("Method not implemented.");
+        }
+        const comp = companyList.find(
+            (company): boolean => company.CompanyId.toString() === companyId
+        );
+
+        return of(comp ? comp : undefined);
     }
 
     private getFilterFunction(

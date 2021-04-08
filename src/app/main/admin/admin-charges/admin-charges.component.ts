@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyChangeEventService } from 'app/core/services/company-change-event.service';
+import { ChargesService } from "./service/charges.service";
 
 @Component({
   selector: 'app-admin-charges',
   templateUrl: './admin-charges.component.html',
-  styleUrls: ['./admin-charges.component.scss']
+  providers: [ChargesService],
 })
 export class AdminChargesComponent implements OnInit {
 
-  constructor(private router: Router,private companyChangeEventService: CompanyChangeEventService) { }
+    charges$ = this.chargesService.getCharges();
+  constructor(
+      private router: Router,
+      private companyChangeEventService: CompanyChangeEventService,
+      private chargesService: ChargesService
+      ) {}
 
 
   ngOnInit() {

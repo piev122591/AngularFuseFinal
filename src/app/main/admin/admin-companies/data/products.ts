@@ -9,6 +9,7 @@ export type CompanyEventType = {
     data: {
         companyName: string;
         status: boolean;
+        companyId?: number;
     };
 };
 export const companyList: CompanySampleData[] = [

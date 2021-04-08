@@ -6,7 +6,6 @@ import { CompanyService } from "./service/company.service";
 @Component({
     selector: "app-admin-companies",
     templateUrl: "./admin-companies.component.html",
-    providers: [CompanyService],
 })
 export class AdminCompaniesComponent {
     companies$ = this.companyService.getCompanyData();

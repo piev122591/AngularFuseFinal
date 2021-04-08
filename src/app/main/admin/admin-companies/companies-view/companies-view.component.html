@@ -32,7 +32,7 @@
   
             <!-- ADD BUTTON -->
             <button mat-raised-button
-                    [routerLink]="'/apps/e-commerce/products/new'"
+                    [routerLink]="'/admin/companies/new'"
                     class="add-product-button fuse-white mt-24 mt-md-0">
                 <span>Add New Company</span>
             </button>
@@ -78,7 +78,7 @@
               <ng-container matColumnDef="Action">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
                   <mat-cell *matCellDef="let comp">
-                      <p class="text-truncate"> <button mat-button class="blue">Edit</button></p>
+                      <p class="text-truncate"> <button mat-button class="blue" >Edit</button></p>
                   </mat-cell>
               </ng-container>
   

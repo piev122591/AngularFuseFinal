@@ -2,6 +2,15 @@ import { Company } from "../../../../login/model/login.model";
 export class CompanySampleData extends Company {
     Status: boolean;
 }
+
+export type CompanyEventType = {
+    mode: "new" | "edit";
+    action: "save";
+    data: {
+        companyName: string;
+        status: boolean;
+    };
+};
 export const companyList: CompanySampleData[] = [
     {
         CompanyId: 1,

@@ -9,6 +9,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { RouterModule } from "@angular/router";
 import { FuseSharedModule } from "@fuse/shared.module";
+import { LoginService } from "./service/login.service";
 const routes = [
     {
         path: "",
@@ -25,7 +26,6 @@ const routes = [
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
-
         FuseSharedModule,
     ],
     declarations: [LoginComponent, LoginViewComponent],

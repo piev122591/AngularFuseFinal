@@ -7,7 +7,6 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { TranslateModule } from "@ngx-translate/core";
-
 import { FuseModule } from "@fuse/fuse.module";
 import { FuseSharedModule } from "@fuse/shared.module";
 import {
@@ -20,6 +19,8 @@ import { AppComponent } from "app/app.component";
 import { LayoutModule } from "app/layout/layout.module";
 import { AuthService } from "./core/guard/auth.service";
 import { LoggedInAuthService } from "./core/guard/logged-in-auth.service";
+import { LoginService } from "./login/service/login.service";
+import { UserService } from "./shared/service/user.service";
 const appRoutes: Routes = [
     {
         path: "login",
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
         LayoutModule,
     ],
     bootstrap: [AppComponent],
-    providers: [AuthService, LoggedInAuthService],
+    exports: [RouterModule],
+    providers: [AuthService, LoggedInAuthService, LoginService, UserService],
 })
 export class AppModule {}

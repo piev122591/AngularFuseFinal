@@ -1,0 +1,9 @@
+ 
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutAlign.gt-xs="space-between" >
+  <div *ngIf="dashboardData">
+    <button mat-raised-button class="warn" *ngFor="let company of dashboardData" (click)="chooseCompany(company)">
+      <mat-icon class="s-16 mr-sm-4">business</mat-icon>
+      <span>{{company.CompanyName}}</span>
+    </button>
+  </div>
+</div>

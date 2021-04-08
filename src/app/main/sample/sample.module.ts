@@ -40,6 +40,11 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
     ],
-    exports: [SampleComponent, CompanyComponent, CompanyViewComponent],
+    exports: [
+        SampleComponent,
+        CompanyComponent,
+        CompanyViewComponent,
+        RouterModule,
+    ],
 })
 export class SampleModule {}

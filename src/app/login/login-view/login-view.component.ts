@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { FuseConfigService } from "@fuse/services/config.service";
 import { fuseAnimations } from "@fuse/animations";
+import { LoginData, LoginResult } from "../model/login.model";
 
 @Component({
     selector: "app-login-view",
@@ -10,6 +11,8 @@ import { fuseAnimations } from "@fuse/animations";
     animations: fuseAnimations,
 })
 export class LoginViewComponent implements OnInit {
+    @Input() loginData: LoginResult;
+    @Output() loginEvent = new EventEmitter<LoginData>();
     loginForm: FormGroup;
 
     /**
@@ -53,5 +56,9 @@ export class LoginViewComponent implements OnInit {
             email: ["", [Validators.required, Validators.email]],
             password: ["", Validators.required],
         });
+    }
+
+    onSubmit(): void {
+        this.loginEvent.emit(this.loginForm.value);
     }
 }

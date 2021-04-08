@@ -19,24 +19,25 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTabsModule } from "@angular/material/tabs";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from "@angular/material/table";
-import { ChargesViewComponent } from './admin-charges/charges-view/charges-view.component';
+import { RouterModule } from "@angular/router";
+import { DashboardViewComponent } from "./admin-dashboard/dashboard-view/dashboard-view.component";
+import { ChargesViewComponent } from "./admin-charges/charges-view/charges-view.component";
 import { AdminVendorsComponent } from "./admin-vendors/admin-vendors.component";
-import { VendorsViewComponent } from './admin-vendors/vendors-view/vendors-view.component';
+import { VendorsViewComponent } from "./admin-vendors/vendors-view/vendors-view.component";
 import { AdminPaymentsComponent } from "./admin-payments/admin-payments.component";
-import { PaymentsViewComponent } from './admin-payments/payments-view/payments-view.component';
+import { PaymentsViewComponent } from "./admin-payments/payments-view/payments-view.component";
 import { AdminServicesComponent } from "./admin-services/admin-services.component";
-import { ServicesViewComponent } from './admin-services/services-view/services-view.component';
-import { UsersViewComponent } from './admin-users/users-view/users-view.component';
+import { ServicesViewComponent } from "./admin-services/services-view/services-view.component";
+import { UsersViewComponent } from "./admin-users/users-view/users-view.component";
 import { AdminUsersComponent } from "./admin-users/admin-users.component";
-import { WirelessViewComponent } from './admin-wireless/wireless-view/wireless-view.component';
+import { WirelessViewComponent } from "./admin-wireless/wireless-view/wireless-view.component";
 import { AdminWirelessComponent } from "./admin-wireless/admin-wireless.component";
-import { PlansViewComponent } from './admin-plans/plans-view/plans-view.component';
+import { PlansViewComponent } from "./admin-plans/plans-view/plans-view.component";
 import { AdminPlansComponent } from "./admin-plans/admin-plans.component";
-import { CompaniesViewComponent } from './admin-companies/companies-view/companies-view.component';
+import { CompaniesViewComponent } from "./admin-companies/companies-view/companies-view.component";
 import { AdminCompaniesComponent } from "./admin-companies/admin-companies.component";
-import { EdiViewComponent } from './admin-edi/edi-view/edi-view.component';
+import { EdiViewComponent } from "./admin-edi/edi-view/edi-view.component";
 import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
 
 @NgModule({
@@ -61,6 +62,7 @@ import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
     declarations: [
         AdminComponent,
         AdminDashboardComponent,
+        DashboardViewComponent,
         AdminAssetsComponent,
         AssetsViewComponent,
         AdminChargesComponent,
@@ -82,5 +84,6 @@ import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
         EdiViewComponent,
         AdminEdiComponent,
     ],
+    exports: [RouterModule],
 })
 export class AdminModule {}

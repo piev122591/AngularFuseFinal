@@ -33,27 +33,24 @@
     [ngClass]="fuseConfig.layout.navbar.primaryBackground"
     fusePerfectScrollbar
     [fusePerfectScrollbarOptions]="{ suppressScrollX: true }"
+    *ngIf="navigationData as data"
 >
     <div
         class="user"
         fxLayout="column"
         [ngClass]="fuseConfig.layout.navbar.secondaryBackground"
     >
-        <div class="h3 username">Admin</div>
-        <div class="h5 email hint-text mt-8">Admin@Auditmacs.com</div>
+        <div class="h3 username">{{ data.UserName }}</div>
+        <div class="h5 email hint-text mt-8">{{ data.Email }}</div>
         <div
             class="avatar-container"
             [ngClass]="fuseConfig.layout.navbar.primaryBackground"
         >
-            <img class="avatar" src="assets/images/avatars/Velazquez.jpg" />
+            <img class="avatar" alt="" src="assets/images/avatars/Velazquez.jpg" />
         </div>
     </div>
 
     <div class="navbar-content">
-        <fuse-navigation
-            class="material2"
-            layout="vertical"
-            [navigation]="navigationData | async"
-        ></fuse-navigation>
+        <fuse-navigation class="material2" layout="vertical"></fuse-navigation>
     </div>
 </div>

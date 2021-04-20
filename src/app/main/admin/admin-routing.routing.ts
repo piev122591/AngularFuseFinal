@@ -18,6 +18,9 @@ import { NewCompanyComponent } from "./admin-companies/new-company/new-company.c
 import { CompanyResolverService } from "./admin-companies/service/company-resolver.service";
 import { EditCompanyComponent } from "./admin-companies/edit-company/edit-company.component";
 
+
+import { NewVendorsComponent } from "./admin-vendors/new-vendors/new-vendors.component";
+
 const routes: Routes = [
     {
         path: "",
@@ -90,6 +93,13 @@ const routes: Routes = [
         component: AdminVendorsComponent,
         canActivate: [AuthService],
     },
+
+    {
+        path: "vendors/new",
+        component: NewVendorsComponent,
+        canActivate: [AuthService],
+    },
+
     {
         path: "wireless",
         component: AdminWirelessComponent,

@@ -11,15 +11,15 @@ export const logindata: User[] = [
         CompanyList: [
             {
                 CompanyId: 1,
-                CompanyName: "Burger King",
+                CompanyName: "Company 1",
             },
             {
                 CompanyId: 2,
-                CompanyName: "Mcdo",
+                CompanyName: "Company 2",
             },
             {
-                CompanyId: 3,
-                CompanyName: "Wendys",
+                CompanyId: 3,   
+                CompanyName: "Company 3",
             },
         ],
         Navigation: [

@@ -25,14 +25,14 @@
             <div class="search-wrapper mx-32 mx-md-0">
                 <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                     <mat-icon>search</mat-icon>
-                    <input #filter placeholder="Search for Vendor">
+                    <input #filter placeholder="Search for Vendor"  (keyup)="vendors.filterFunction($event)">
                 </div>
             </div>
             <!-- / SEARCH -->
-  
+            
             <!-- ADD BUTTON -->
             <button mat-raised-button
-                    [routerLink]="'/apps/e-commerce/products/new'"
+            [routerLink]="'/admin/vendors/new'"
                     class="add-product-button fuse-white mt-24 mt-md-0">
                 <span>Add New Vendor</span>
             </button>
@@ -42,87 +42,82 @@
         <!-- / HEADER -->
   
         <!-- CONTENT CARD -->
-        <div class="content-card">
-  
-            <mat-table class="vendors-table"
-                       #table [dataSource]="vendors"
+        <div class="content-card"> 
+            <mat-table class="assets-table"
+                       #table [dataSource]="vendors.vendorsList"
                        matSort
                        [@animateStagger]="{value:'50'}"
                        fusePerfectScrollbar>
   
                 <!-- ID Column -->
-                <ng-container matColumnDef="DeviceId">
+                <ng-container matColumnDef="VendorId">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-                    <mat-cell *matCellDef="let product">
-                        <p class="text-truncate">{{product.DeviceId}}</p>
+                    <mat-cell *matCellDef="let comp">
+                        <p class="text-truncate">{{comp.VendorId}}</p>
                     </mat-cell>
                 </ng-container>
   
                   <!-- Vendor Column -->
-                  <ng-container matColumnDef="Vendor">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</mat-header-cell>
-                      <mat-cell *matCellDef="let product">
-                          <p class="text-truncate">{{product.Vendor}}</p>
+                  <ng-container matColumnDef="VendorName">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                      <mat-cell *matCellDef="let comp">
+                          <p class="text-truncate">{{comp.VendorName}}</p>
                       </mat-cell>
                   </ng-container>
-  
-                    <!-- Asset type Column -->
-                    <ng-container matColumnDef="AssetType">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header>Asset Type</mat-header-cell>
-                      <mat-cell *matCellDef="let product">
-                          <p class="text-truncate">{{product.AssetType}}</p>
-                      </mat-cell>
-                  </ng-container>
-  
-  
-                    <!-- Make Column -->
-                    <ng-container matColumnDef="Make">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header>Make</mat-header-cell>
-                      <mat-cell *matCellDef="let product">
-                          <p class="text-truncate">{{product.Make}}</p>
-                      </mat-cell>
-                  </ng-container>
-  
-                    <!-- Make Column -->
-                    <ng-container matColumnDef="Model">
-                      <mat-header-cell *matHeaderCellDef mat-sort-header>Model</mat-header-cell>
-                      <mat-cell *matCellDef="let product">
-                          <p class="text-truncate">{{product.Model}}</p>
-                      </mat-cell>
-                  </ng-container>
+
+                   <!-- ELectronic Data Column -->
+                   <ng-container matColumnDef="ElectronicData">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Uses Electronic Data?</mat-header-cell>
+                    <mat-cell *matCellDef="let comp">
+                        <p class="text-truncate"  *ngIf="comp.ElectronicData" >Yes</p>
+                        <p class="text-truncate"  *ngIf="!comp.ElectronicData" >No</p>
+                    </mat-cell>
+                </ng-container>
+
+
+                  <!-- IsWireless Column -->
+                  <ng-container matColumnDef="IsWireless">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>IsWireless</mat-header-cell>
+                    <mat-cell *matCellDef="let comp">
+                        <p class="text-truncate"  *ngIf="comp.IsWireless" >Yes</p>
+                        <p class="text-truncate"  *ngIf="!comp.IsWireless" >No</p>
+                    </mat-cell>
+                </ng-container>
+
+
+                    <!-- IsWireline Column -->
+                    <ng-container matColumnDef="IsWireline">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>IsWireline</mat-header-cell>
+                        <mat-cell *matCellDef="let comp">
+                            <p class="text-truncate"  *ngIf="comp.IsWireline" >Yes</p>
+                            <p class="text-truncate"  *ngIf="!comp.IsWireline" >No</p>
+                        </mat-cell>
+                    </ng-container>
                
                      <!-- Active Column -->
                 <ng-container matColumnDef="Status">
                   <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Status</mat-header-cell>
-                  <mat-cell *matCellDef="let product" fxHide fxShow.gt-xs>
-                      <mat-icon *ngIf="product.Status" class="active-icon green-600 s-16">check</mat-icon>
-                      <mat-icon *ngIf="!product.Status" class="active-icon red-500 s-16">close</mat-icon>
+                  <mat-cell *matCellDef="let comp" fxHide fxShow.gt-xs>
+                      <mat-icon *ngIf="comp.Status" class="active-icon green-600 s-16">check</mat-icon>
+                      <mat-icon *ngIf="!comp.Status" class="active-icon red-500 s-16">close</mat-icon>
                   </mat-cell>
               </ng-container>
   
-                 <!-- Image Column -->
-                 <ng-container matColumnDef="Image">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header>Image</mat-header-cell>
-                  <mat-cell *matCellDef="let product">
-                      <p class="text-truncate">{{product.Image}}</p>
-                  </mat-cell>
-              </ng-container>
   
               <ng-container matColumnDef="Action">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
-                  <mat-cell *matCellDef="let product">
-                      <p class="text-truncate"> <button mat-button class="blue">Edit</button></p>
+                  <mat-cell *matCellDef="let comp">
+                      <p class="text-truncate"> <a [routerLink]="'/admin/companies/'+comp.CompanyId+'/edit'" mat-button class="blue" >Edit</a></p>
                   </mat-cell>
               </ng-container>
   
             
   
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+                <mat-header-row *matHeaderRowDef="vendors.displayedColumns; sticky:true"></mat-header-row>
   
-                <mat-row *matRowDef="let product; columns: displayedColumns;"
+                <mat-row *matRowDef="let product; columns: vendors.displayedColumns;"
                          class="product"
-                         matRipple
-                         [routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">
+                         mat-ripple>
                 </mat-row>
   
             </mat-table>

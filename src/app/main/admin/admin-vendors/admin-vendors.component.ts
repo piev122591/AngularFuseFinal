@@ -8,17 +8,14 @@ import { VendorService } from "./service/vendor.service";
   providers:[VendorService],
   
 })
-export class AdminVendorsComponent implements OnInit {
-    vendors$ = this.vendorService.getVendors();
+export class AdminVendorsComponent{
+    vendors$ = this.vendorService.getVendorsData();
   constructor(
       private router:Router,
       private companyChangeEventService: CompanyChangeEventService,
       private vendorService: VendorService
       ) { }
 
-
-  ngOnInit() {
-  }
 
   chooseCompany(companyId: number): void {
     this.companyChangeEventService.fire({

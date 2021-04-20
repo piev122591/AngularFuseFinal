@@ -47,6 +47,13 @@ import { CompanyService } from "./admin-companies/service/company.service";
 import { CompanyResolverService } from "./admin-companies/service/company-resolver.service";
 import { EditCompanyComponent } from "./admin-companies/edit-company/edit-company.component";
 import { EditCompanyViewComponent } from "./admin-companies/edit-company/edit-company-view/edit-company-view.component";
+import { NewVendorsComponent } from './admin-vendors/new-vendors/new-vendors.component';
+import { NewVendorsViewComponent } from './admin-vendors/new-vendors/new-vendors-view/new-vendors-view.component';
+import { EditVendorsComponent } from './admin-vendors/edit-vendors/edit-vendors.component';
+import { EditVendorsViewComponent } from './admin-vendors/edit-vendors/edit-vendors-view/edit-vendors-view.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
     imports: [
@@ -70,6 +77,8 @@ import { EditCompanyViewComponent } from "./admin-companies/edit-company/edit-co
         MatCheckboxModule,
         MatIconModule,
         FuseSharedModule,
+        MatSlideToggleModule,
+        MatGridListModule
     ],
     declarations: [
         AdminComponent,
@@ -99,6 +108,11 @@ import { EditCompanyViewComponent } from "./admin-companies/edit-company/edit-co
         NewCompanyViewComponent,
         EditCompanyComponent,
         EditCompanyViewComponent,
+        NewVendorsComponent,
+        NewVendorsViewComponent,
+        EditVendorsComponent,
+        EditVendorsViewComponent,
+      
     ],
     exports: [RouterModule],
     providers: [CompanyService, CompanyResolverService],

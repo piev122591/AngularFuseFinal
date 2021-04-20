@@ -17,6 +17,10 @@ export class LoginService {
     loginStatus$ = this.loginStatus.asObservable().pipe(
         distinctUntilChanged(),
         map((user): boolean => {
+            user = {
+                response: true,
+                data: logindata[0],
+            };
             if (user.response) {
                 this.userService.setCurrentUser(user.data);
             }

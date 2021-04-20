@@ -39,6 +39,21 @@ import { CompaniesViewComponent } from "./admin-companies/companies-view/compani
 import { AdminCompaniesComponent } from "./admin-companies/admin-companies.component";
 import { EdiViewComponent } from "./admin-edi/edi-view/edi-view.component";
 import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
+import { NewCompanyComponent } from "./admin-companies/new-company/new-company.component";
+import { MatStepperModule } from "@angular/material/stepper";
+import { NewCompanyViewComponent } from "./admin-companies/new-company/new-company-view/new-company-view.component";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { CompanyService } from "./admin-companies/service/company.service";
+import { CompanyResolverService } from "./admin-companies/service/company-resolver.service";
+import { EditCompanyComponent } from "./admin-companies/edit-company/edit-company.component";
+import { EditCompanyViewComponent } from "./admin-companies/edit-company/edit-company-view/edit-company-view.component";
+import { NewVendorsComponent } from './admin-vendors/new-vendors/new-vendors.component';
+import { NewVendorsViewComponent } from './admin-vendors/new-vendors/new-vendors-view/new-vendors-view.component';
+import { EditVendorsComponent } from './admin-vendors/edit-vendors/edit-vendors.component';
+import { EditVendorsViewComponent } from './admin-vendors/edit-vendors/edit-vendors-view/edit-vendors-view.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
     imports: [
@@ -57,7 +72,13 @@ import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
         MatSnackBarModule,
         MatTabsModule,
         MatTableModule,
+        MatFormFieldModule,
+        MatStepperModule,
+        MatCheckboxModule,
+        MatIconModule,
         FuseSharedModule,
+        MatSlideToggleModule,
+        MatGridListModule
     ],
     declarations: [
         AdminComponent,
@@ -83,7 +104,17 @@ import { AdminEdiComponent } from "./admin-edi/admin-edi.component";
         AdminCompaniesComponent,
         EdiViewComponent,
         AdminEdiComponent,
+        NewCompanyComponent,
+        NewCompanyViewComponent,
+        EditCompanyComponent,
+        EditCompanyViewComponent,
+        NewVendorsComponent,
+        NewVendorsViewComponent,
+        EditVendorsComponent,
+        EditVendorsViewComponent,
+      
     ],
     exports: [RouterModule],
+    providers: [CompanyService, CompanyResolverService],
 })
 export class AdminModule {}

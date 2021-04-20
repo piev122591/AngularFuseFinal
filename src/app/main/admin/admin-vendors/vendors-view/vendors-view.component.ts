@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { fuseAnimations } from '@fuse/animations';
+import { VendorsData } from "../../model/vendors.model";
 
 @Component({
   selector: 'app-vendors-view',
@@ -7,23 +8,8 @@ import { fuseAnimations } from '@fuse/animations';
   styleUrls: ['./vendors-view.component.scss'],
   animations: fuseAnimations,
 })
-export class VendorsViewComponent implements OnInit {
-    displayedColumns = [
-        "DeviceId",
-        "Vendor",
-        "AssetType",
-        "Make",
-        "Model",
-        "Status",
-        "Image",
-        "Action",
-      
-    ];
-    @Input() vendors: any;
-    
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class VendorsViewComponent {
+    @Input() vendors: VendorsData;
 }
+
+

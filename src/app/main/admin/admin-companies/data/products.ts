@@ -1,21 +1,31 @@
-export const products = [
+import { Company } from "../../../../login/model/login.model";
+export class CompanySampleData extends Company {
+    Status: boolean;
+}
+
+export type CompanyEventType = {
+    mode: "new" | "edit";
+    action: "save";
+    data: {
+        companyName: string;
+        status: boolean;
+        companyId?: number;
+    };
+};
+export const companyList: CompanySampleData[] = [
     {
-        DeviceId: "1",
-        Vendor: "Verizon Wireless",
-        AssetType: "Smartphone",
-        Make: "Apple",
-        Model: "Iphone 10",
-        Status:true,
-        Image:"Img",
+        CompanyId: 1,
+        CompanyName: "Burger King",
+        Status: true,
     },
     {
-        DeviceId: "2",
-        Vendor: "Verizon Wireless",
-        AssetType: "Tablet",
-        Make: "Apple",
-        Model: "iPad Air",
-        Status:false,
-        Image:"Img",
+        CompanyId: 2,
+        CompanyName: "Mcdo",
+        Status: true,
     },
-    
+    {
+        CompanyId: 3,
+        CompanyName: "Wendys",
+        Status: true,
+    },
 ];

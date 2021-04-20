@@ -1,0 +1,94 @@
+<div id="companies" class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+       <!-- HEADER -->
+       <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <!-- APP TITLE -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/admin/companies'">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+
+            <div class="product-image mr-8 mr-sm-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                <!-- <img *ngIf="product.images[0]" [src]="product.images[0].url">
+                <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'"> -->
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start start"
+                 [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                <div class="h2">
+                    New Company
+                </div>
+                <div class="subtitle secondary-text">
+                    <span>Company Detail</span>
+                </div>
+            </div>
+        </div>
+        <!-- / APP TITLE -->
+
+     
+ 
+    </div>
+    <!-- / HEADER -->
+
+      <!-- CONTENT CARD -->
+      <div class="content-card"> 
+        
+        <div class="content">
+          <mat-horizontal-stepper [linear]="true" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Company Details</ng-template>
+                <mat-form-field>
+                  <mat-label>Company Name</mat-label>
+                  <input matInput placeholder="Company Name" formControlName="companyName" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" label="Configuration">
+              <form [formGroup]="secondFormGroup">  
+                <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Confirm</ng-template>
+              <p>You are now done.</p>
+              <table>
+                <tr >
+                  <th>Company Name</th>
+                  <td>{{firstFormGroup.controls['companyName'].value}}</td>
+              </tr>
+              <tr >
+                <th>Status</th>
+                <td>{{secondFormGroup.controls['status'].value ? 'Active' : 'In-Active'}}</td>
+            </tr>
+                </table>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button mat-button (click)="submit()">Save</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+
+      </div>    
+      <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

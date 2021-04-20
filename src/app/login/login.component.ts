@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {}
     loginEvent(event: LoginData): void {
-        console.log(event);
         this.loginService.submitLogin(event);
     }
 }

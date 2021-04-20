@@ -42,30 +42,37 @@
           <div class="content">
             <mat-vertical-stepper [linear]="true" #stepper>
               <mat-step [stepControl]="firstFormGroup" label="Vendor Information">
-                <form [formGroup]="firstFormGroup">
-                  <!-- <ng-template matStepLabel>Vendor Information</ng-template> -->
-                  <mat-form-field>
-                    <mat-label>Vendor Name</mat-label>
-                    <input matInput placeholder="Vendor Name" formControlName="vendorName" required>
-                  </mat-form-field>
-                  <div>
-                    <mat-checkbox formControlName="electronicData">Uses Electronic Data</mat-checkbox>
-                 </div>
-
-                 <div>
-                    <mat-checkbox formControlName="isWireless">Is Wireless</mat-checkbox>
-                 </div>
-
-                 <div>
-                    <mat-checkbox formControlName="isWireline">Is Wireline</mat-checkbox>
-                 </div>
-
-                 <div>
-                    <mat-checkbox formControlName="status">Is Active</mat-checkbox>
-                 </div>
+                <form [formGroup]="firstFormGroup" > 
+                  <div id="form-container">
+                    <div fxLayout="row" fxLayoutAlign="space-around center" >
+                      <mat-label fxFlex="30">Vendor Name</mat-label>
+                      <mat-form-field fxFlex="70" appearance="outline"> 
+                        <input matInput placeholder="Vendor Name" formControlName="vendorName" required>
+                      </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-around center">
+                      <mat-label fxFlex="30">Uses Electronic Data</mat-label>
+                      <div fxFlex="70" class="input-wrapper">
+                        <mat-checkbox formControlName="electronicData"></mat-checkbox>
+                      </div>
+                    </div>
 
                   <div>
-                    <button mat-button matStepperNext>Next</button>
+                      <mat-checkbox formControlName="isWireless">Is Wireless</mat-checkbox>
+                  </div>
+
+                  <div>
+                      <mat-checkbox formControlName="isWireline">Is Wireline</mat-checkbox>
+                  </div>
+
+                  <div>
+                      <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+                  </div>
+                  <div fxLayout="row">
+                    <div fxFlex class="form-button-container">
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+                    </div>
                   </div>
                 </form>
               </mat-step>
